@@ -1,51 +1,33 @@
 /*=================================================
-* FileName: TimeData.h
+* FileName: TimeDate.h
 *
 * Created by: DotCam
 * Project name: OceanProject
-* Unreal Engine version: 4.9
+* Unreal Engine version: 4.18.3
 * Created on: 2015/07/29
 *
-* Last Edited on: 2016/06/05
-* Last Edited by: DotCam
+* Last Edited on: 2019/12/27
+* Last Edited by: iliags
 *
 * -------------------------------------------------
 * For parts referencing UE4 code, the following copyright applies:
-* Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+* Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
 *
 * Feel free to use this software in any commercial/free game.
 * Selling this as a plugin/item, in whole or part, is not allowed.
 * See "OceanProject\License.md" for full licensing details.
 * =================================================*/
 
-
-
 #pragma once
 
-#include "OceanPluginPrivatePCH.h"
-#include "Runtime/Core/Public/Misc/DateTime.h"
+#include "CoreMinimal.h"
 #include "TimeDate.generated.h"
 
 
 USTRUCT(BlueprintType)
 struct FTimeDate
-    {
-	GENERATED_USTRUCT_BODY()
-
-		// Default constructor
-	FTimeDate() { FTimeDate(0, 0, 0, 0, 0, 0, 0); }
-
-	// Copy Constructor
-	//FTimeDate(FTimeDate& time) { FTimeDate(time.Year, time.Month, time.Day, time.Hour, time.Minute, time.Second, time.Millisecond); }
-
-	// Date values only constructor
-	FTimeDate(int32 year, int32 month, int32 day) { FDateTime(year, month, day, 0, 0, 0, 0); }
-
-	// Fully initialized constructor
-	FTimeDate(int32 year, int32 month, int32 day, int32 hour, int32 minute, int32 second, int32 millisecond)
-	    {
-		Year = year; Month = month; Day = day; Hour = hour; Minute = minute; Second = second; Millisecond = millisecond;
-	    }
+{
+	GENERATED_BODY()
 
 	// The millisecond value for this time and date.
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Time")
@@ -75,51 +57,15 @@ struct FTimeDate
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Time")
 	int32 Year;
 
-
-	// The following functions are only used in code.
-
-
-
-	// 
-	// 	bool IsEqual(const FTimeDate& other) const
-	// 		{
-	// 		return (Year == other.Year) && (Month == other.Month) && (Day == other.Day) &&
-	// 			(Hour == other.Hour) && (Minute == other.Minute) && (Second == other.Second);
-	// 		}
-	// 
-	// 	bool operator==(const FTimeDate& other) const
-	// 		{
-	// 		return IsEqual(other);
-	// 		}
-	// 
-	// 	bool operator!=(const FTimeDate& other) const
-	// 		{
-	// 		return !IsEqual(other);
-	// 		}
-	// 
-	// 	bool operator>(const FTimeDate& other) const
-	// 		{
-	// 		return (Year > other.Year) || (Month > other.Month) || (Day > other.Day) ||
-	// 			(Hour > other.Hour) || (Minute > other.Minute) || (Second > other.Second);
-	// 		}
-	// 
-	// 	bool operator>=(const FTimeDate& other) const
-	// 		{
-	// 		return IsEqual(other) || (Year > other.Year) || (Month > other.Month) || (Day > other.Day) ||
-	// 			(Hour > other.Hour) || (Minute > other.Minute) || (Second > other.Second);
-	// 		}
-	// 
-	// 	bool operator<(const FTimeDate& other) const
-	// 		{
-	// 		return (Year < other.Year) || (Month < other.Month) || (Day < other.Day) ||
-	// 			(Hour < other.Hour) || (Minute < other.Minute) || (Second < other.Second);
-	// 		}
-	// 
-	// 	bool operator<=(const FTimeDate& other) const
-	// 		{
-	// 		return IsEqual(other) || (Year < other.Year) || (Month < other.Month) || (Day < other.Day) ||
-	// 			(Hour < other.Hour) || (Minute < other.Minute) || (Second < other.Second);
-	// 		}
+	// Fully initialized constructor
+	FTimeDate(int32 InYear = 1900, int32 InMonth = 1, int32 InDay = 1, int32 InHour = 0, int32 InMinute = 0, int32 InSecond = 0, int32 InMillisecond = 0)
+	{
+		Year = InYear;
+		Month = InMonth;
+		Day = InDay;
+		Hour = InHour;
+		Minute = InMinute;
+		Second = InSecond;
+		Millisecond = InMillisecond;
+	}
 };
-
-

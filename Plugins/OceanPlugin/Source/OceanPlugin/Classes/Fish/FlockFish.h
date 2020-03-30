@@ -3,15 +3,15 @@
 * 
 * Created by: Komodoman
 * Project name: OceanProject
-* Unreal Engine version: 4.12.2
+* Unreal Engine version: 4.18.3
 * Created on: 2015/03/17
 *
-* Last Edited on: 2016/06/10
-* Last Edited by: DotCam
+* Last Edited on: 2018/03/15
+* Last Edited by: Felipe "Zoc" Silveira
 * 
 * -------------------------------------------------
 * For parts referencing UE4 code, the following copyright applies:
-* Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+* Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
 *
 * Feel free to use this software in any commercial/free game.
 * Selling this as a plugin/item, in whole or part, is not allowed.
@@ -20,20 +20,22 @@
 
 #pragma once
 
+#include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
-#include "Fish/FishState.h"
 #include "Fish/FishManager.h"
 #include "FlockFish.generated.h"
+
+
 /**
  * 
  */
 UCLASS()
-class AFlockFish : public APawn
+class OCEANPLUGIN_API AFlockFish : public APawn
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 	// Current state of the Fish
-	FishState* currentState;
+	class FishState* currentState;
 
 	/** Static mesh component */
 	class UStaticMeshComponent* base;
@@ -212,16 +214,13 @@ public:
 	float minY;
 	float minZ;
 
-	/** Constructor */
-	AFlockFish(const FObjectInitializer& ObjectInitializer);
-
 	// Getters and Setters
 	FVector getSeekTarget()
 	{
 		return target;
 	}
 
-	void setState(FishState* newState)
+	void setState(class FishState* newState)
 	{
 		currentState = newState;
 	}

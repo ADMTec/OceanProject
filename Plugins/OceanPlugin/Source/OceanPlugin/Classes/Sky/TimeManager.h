@@ -1,18 +1,17 @@
-/*
-* =================================================
+/*=================================================
 * FileName: TimeManager.h
 *
 * Created by: DotCam
 * Project name: OceanProject
-* Unreal Engine version: 4.12.2
+* Unreal Engine version: 4.18.3
 * Created on: 2015/07/12
 *
-* Last Edited on: 2016/06/12
-* Last Edited by: DotCam
+* Last Edited on: 2019/12/27
+* Last Edited by: iliags
 *
 * -------------------------------------------------
 * For parts referencing UE4 code, the following copyright applies:
-* Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
+* Copyright 1998-2018 Epic Games, Inc. All Rights Reserved.
 *
 * Feel free to use this software in any commercial/free game.
 * Selling this as a plugin/item, in whole or part, is not allowed.
@@ -21,7 +20,8 @@
 
 #pragma once
 
-#include "OceanPluginPrivatePCH.h"
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
 #include "Sky/TimeDate.h"
 #include "TimeManager.generated.h"
 
@@ -182,7 +182,7 @@ public:
 	* @return: int32 - The total number of days in the given year.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "TimeManager")
-	int32 GetDaysInYear(int32 year);
+	int32 GetDaysInYear(int32 year = 1900);
 
 	/**
 	* Name: DaysInMonth
@@ -193,7 +193,7 @@ public:
 	* @return: int32 - The number of days in the given month for the given year.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "TimeManager")
-	int32 GetDaysInMonth(int32 year, int32 month);
+	int32 GetDaysInMonth(int32 year = 1900, int32 month = 1);
 
 	/**
 	* Name: GetElapsedDayInMinutes
@@ -243,7 +243,7 @@ public:
 	* @return: bool - Will return true if it is a leap year, otherwise false.
 	*/
 	UFUNCTION(BlueprintCallable, Category = "TimeManager")
-	bool IsLeapYear(int32 year);
+	bool IsLeapYear(int32 year = 1900);
 
 
 	/**
